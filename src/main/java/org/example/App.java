@@ -12,23 +12,51 @@ public class App
         Scanner in = new Scanner(System.in);
 
         System.out.print("Enter weight: ");
-        int weight = in.nextInt();
+        int weight = 0;
+        if(in.hasNextInt()) {
+            weight = in.nextInt();
+        } else {
+            System.out.println("Please try again and enter a numerical value.");
+            System.exit(1);
+        }
         System.out.print("Enter gender(1 for MALE/2 for FEMALE): ");
-        int gender = in.nextInt();
+        int gender = -1;
+        if(in.hasNextInt()) {
+            gender = in.nextInt();
+        } else {
+            System.out.println("Please try again and enter a numerical value.");
+            System.exit(1);
+        }
         System.out.print("Enter total alcohol consumed(ounces): ");
-        int oz = in.nextInt();
+        int oz = 0;
+        if(in.hasNextInt()) {
+            oz = in.nextInt();
+        } else {
+            System.out.println("Please try again and enter a numerical value.");
+            System.exit(1);
+        }
         System.out.print("Enter amount of hours since last drink: ");
-        int hours = in.nextInt();
+        int hours = 0;
+        if(in.hasNextInt()) {
+            oz = in.nextInt();
+        } else {
+            System.out.println("Please try again and enter a numerical value.");
+            System.exit(1);
+        }
+
 
         //0.73 for men
         //0.66 for women
         double rM = 0.73;
         double rF = 0.66;
-        double bac;
+        double bac = 0;
         if(gender == 1) {
             bac = (oz * 5.14 / weight * rM) - 0.015 * hours;
-        } else {
+        } else if(gender == 2){
             bac = (oz * 5.14 / weight * rF) - 0.015 * hours;
+        } else {
+            System.out.println("Please enter a valid input for gender (1 for male, 2 for female)");
+            System.exit(1);
         }
 
         System.out.printf("Your BAC is %.2f\n", bac);
